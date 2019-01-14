@@ -7,7 +7,7 @@
 <title>Sample Web Application accessing JMS Resources</title>
 </head>
 <body>
-<form action="/jms-webapp/UserServlet">
+<form action="/jms-servlet/UserServlet">
 <h1>Please enter the updated information</h1>
 <table>
 <tr>
