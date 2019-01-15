@@ -23,7 +23,8 @@ import javax.jms.TextMessage;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 /**
  * Servlet implementation class for Servlet: UserServlet
  *
@@ -35,6 +36,7 @@ public class UserServlet extends javax.servlet.http.HttpServlet implements javax
     private Queue queue;
     static final long serialVersionUID = 1L;
 
+    static Logger log=LogManager.getLogger(UserServlet.class.getName());
 
     /* (non-Java-doc)
      * @see javax.servlet.http.HttpServlet#HttpServlet()
@@ -49,12 +51,13 @@ public class UserServlet extends javax.servlet.http.HttpServlet implements javax
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         PrintWriter out = response.getWriter();
         if(connectionFactory == null) {
-            out.println("Connection Factory lookup has failed");
+//            out.println("Connection Factory lookup has failed");
+            log.error("Connection Factory lookup has failed");
             return;
         }
 
         if(queue == null) {
-            out.println("Queue lookup has failed");
+            log.error("Queue lookup has failed");
             return;
         }
 
